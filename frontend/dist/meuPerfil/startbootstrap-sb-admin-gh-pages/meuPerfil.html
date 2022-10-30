@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>BiddinGeeks - Meu Perfil</title>
+        <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
+        <link href="css/styles.css" rel="stylesheet" />
+        <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+    </head>
+    <body class="sb-nav-fixed">
+        <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+            <!-- Navbar Brand-->
+            <a class="navbar-brand ps-3" href="C:\Users\danie\OneDrive\Área de Trabalho\Projetos\Faculdade\BiddinGeeks\BiddinGeeks-master\frontend\dist\index.html">BiddinGeeks</a>
+            <!-- Sidebar Toggle-->
+            <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
+            <!-- Navbar Perfil-->
+            <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
+                <div class="input-group">
+                </div>
+            </form>
+        </nav>
+        <div id="layoutSidenav">
+            <div id="layoutSidenav_nav">
+                <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+                    <div class="sb-sidenav-menu">
+                        <div class="nav">
+                            <div class="sb-sidenav-menu-heading">Minha Conta</div>
+                            <a class="nav-link" href="#layoutSidenav_content" onclick="ativarPerfilcontent()">
+                                <div class="sb-nav-link-icon"><i class="fa fa-user"></i></div>
+                                Meu Perfil
+                            </a>
+                        </div>
+                    </div>
+                    <div class="sb-sidenav-footer">
+                        <div class="small">Logged in as:</div>
+                        Yuri In da Hood
+                    </div>
+                </nav>
+            </div>
+            <div id="layoutSidenav_content">
+                <main>
+                    <div class="container-fluid px-4">
+                        <h1 class="mt-4">Perfil</h1>
+                        <ol class="breadcrumb mb-1">
+                            <li class="breadcrumb-item active">Alterar usuário</li>
+                        </ol>
+                        <form>
+                            <div style="width: fit-content;" class="form-group mt-8">
+                                <input type="usuario" class="form-control" id="alterarUsuario" aria-describedby="altUser"
+                                    placeholder="Novo Usuário">
+                            </div>
+                        </form>
+                        <ol class="breadcrumb mb-1">
+                            <li class="breadcrumb-item active">Alterar senha</li>
+                        </ol>
+                        <form>
+                            <div style="width: fit-content;" class="form-group mt-8 breadcrumb mb-2">
+                                <input type="antigasenha" class="form-control" id="antigaSenha" aria-describedby="antSenha"
+                                    placeholder="Senha antiga">
+                            </div>
+                        </form>
+                        <form>
+                            <div style="width: fit-content;" class="form-group mt-8">
+                                <input type="senha" class="form-control" id="alterarSenha" aria-describedby="altSenha"
+                                    placeholder="Nova senha">
+                            </div>
+                        </form>
+                        <ol class="breadcrumb mb-1">
+                           <li class="breadcrumb-item active">Alterar e-mail</li>
+                        </ol>
+                        <form>
+                           <div style="width: fit-content;" class="form-group mt-8">
+                                <input type="email" class="form-control" id="alterarEmail" aria-describedby="altEmail"
+                                    placeholder="Novo email">
+                            </div>
+                        </form>
+                        <ol class="breadcrumb mb-1">
+                            <li class="breadcrumb-item active">Alterar telefone</li>
+                         </ol>
+                         <form>
+                            <div style="width: fit-content;" class="form-group mt-8">
+                                 <input type="telefone" class="form-control" id="alterarTelefone" aria-describedby="altTelefone"
+                                     placeholder="Novo ">
+                             </div>
+                         </form>
+                    </div>
+                </main>
+                <main>
+                    <div class="container-fluid px-4">
+                        <h1 class="mt-4">Produtos</h1>
+                        <table class="table">
+                            <thead>
+                              <tr>
+                                <th scope="col">Id</th>
+                                <th scope="col">Nome</th>
+                                <th scope="col">Vísivel</th>
+                                <th scope="col">Estoque</th>
+                                <th scope="col">Lance inicial</th>
+                              </tr>
+                              <form>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <th scope="row">1</th>
+                                <td>HQ Os Novos Vingadores - Vingadores Sombrios</td>
+                                <td>Sim</td>
+                                <td>2</td>
+                                <td>R$80</td>
+                                <td><button class="btn btn-primary">Editar</button></td>
+                                <td><button class="btn btn-danger">Excluir</button></td>
+                              </tr>
+                              <tr>
+                                <th scope="row">2</th>
+                                <td>Manta da Akatsuki</td>
+                                <td>Sim</td>
+                                <td>5</td>
+                                <td>R$120</td>
+                                <td><button class="btn btn-primary">Editar</button></td>
+                                <td><button class="btn btn-danger">Excluir</button></td>
+                              </tr>
+                              <tr>
+                                <th scope="row">3</th>
+                                <td>Luminaria de tetris</td>
+                                <td>Sim</td>
+                                <td>1</td>
+                                <td>R$60</td>
+                                <td><button class="btn btn-primary">Editar</button></td>
+                                <td><button class="btn btn-danger">Excluir</button></td>
+                              </tr>
+                              <tr>
+                                <th scope="row">4</th>
+                                <td>Figure action - Goku instinto superior</td>
+                                <td>Sim</td>
+                                <td>1</td>
+                                <td>R$180</td>
+                                <td><button class="btn btn-primary">Editar</button></td>
+                                <td><button class="btn btn-danger">Excluir</button></td>
+                              </tr>
+                            </tbody>
+                          </table>
+                    </div>
+                </main>
+                <footer class="py-4 bg-light mt-auto">
+                    <div class="container-fluid px-4">
+                        <div class="d-flex align-items-center justify-content-between small">
+                            <div class="text-muted">Copyright &copy; BiddinGeeks 2022</div>
+                            <div>
+                                <a href="#">Privacy Policy</a>
+                                &middot;
+                                <a href="#">Terms &amp; Conditions</a>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+            </div>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+        <script src="js/scripts.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+        <script src="assets/demo/chart-area-demo.js"></script>
+        <script src="assets/demo/chart-bar-demo.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
+        <script src="js/datatables-simple-demo.js"></script>
+    </body>
+</html>

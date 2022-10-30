@@ -11,8 +11,6 @@
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
     <!-- Bootstrap icons-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
-    <!-- Add icon library -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="css/styles.css" rel="stylesheet" />
 </head>
@@ -28,34 +26,132 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
                     <li class="nav-item dropdown">
-                        <div>
-                            <input type="text" class="form-control" placeholder="Pesquisar" aria-label="Pesquisar" aria-describedby="basic-addon1">
-                            
-                        </div>
+                        <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">Produtos</a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="#!">Todos</a></li>
+                            <li>
+                                <hr class="dropdown-divider" />
+                            </li>
+                            <li><a class="dropdown-item" href="#!">Populares</a></li>
+                            <li><a class="dropdown-item" href="#!">Novos</a></li>
+                        </ul>
                     </li>
-                    <button class="btn"><i class="fa fa-search"></i></button>
                 </ul>
-                <form class="d-flex">
-                    <a class="btn btn-outline-dark" type="submit" href="C:\Users\danie\OneDrive\Área de Trabalho\Projetos\Faculdade\BiddinGeeks\BiddinGeeks-master\frontend\dist\meuPerfil\startbootstrap-sb-admin-gh-pages\meuPerfil.html">
-                        <i class="bi bi-person"></i>
-                        Meu Perfil
-                    </a>
-                </form>
+                <!--
+            <form class="d-flex">
+                <button class="btn btn-outline-dark" type="submit">
+                    <i class="bi bi-person"></i>
+                    Meu Perfil
+                </button>
+            </form>
+            -->
             </div>
         </div>
     </nav>
-    <!-- Header-->
-    <header class="bg-dark py-5">
+    <!-- Product section-->
+    <section class="py-5">
         <div class="container px-4 px-lg-5 my-5">
-            <div class="text-center text-white">
-                <h1 class="display-4 fw-bolder">Leilão Geek</h1>
-                <p class="lead fw-normal text-white-50 mb-0">O melhor preço é você quem faz</p>
+            <div class="row gx-4 gx-lg-5 align-items-center">
+                <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" src="../src/assets/product3.jpg" alt="..."
+                        style="max-width: 600px; max-height: 700px;" /></div>
+                <div class="col-md-6">
+                    <div class="small mb-1">ID: 000001</div>
+                    <h1 class="display-5 fw-bolder">Kit Gamer</h1>
+                    <div class="fs-5 mb-5">
+                        <span>R$ 850.00</span>
+                    </div>
+                    <p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium at dolorem
+                        quidem modi. Nam sequi consequatur obcaecati excepturi alias magni, accusamus eius blanditiis
+                        delectus ipsam minima ea iste laborum vero?</p>
+                    <div class="d-flex">
+                        <input class="form-control text-center me-3" id="inputQuantity" type="num" placeholder="0.00"
+                            style="max-width: 10rem"/>
+                        <button class="btn btn-outline-dark flex-shrink-0" type="button" onclick="bid()">
+                            <i class="bi bi-currency-dollar me-1"></i>
+                            Dar Lance
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <br/>
+            <br/>
+            <br/>
+            <div class="row gx-4 gx-lg-5">
+                <div class="col-md-6">
+                    <div> <h2 class="fw-bolder">Tempo restante</h2></div>
+                    <div class="col mb-5">
+                        <div class="card h-100">
+                            <!-- Product image-->
+                            
+                            <!-- Product details-->
+                            <div class="card-body p-4" >
+                                <div class="text-center" style="margin-top: 70px; margin-bottom: 75px ;">
+                                    <!-- Timer-->
+                                    <hr>
+                                    <h5 class="fw-bolder">000 Dia 00 Horas 00 Minutos 00 Segundos</h5>
+                                    <hr>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div> <h2 class="fw-bolder">Últimos lances</h2></div>
+                    <table class="table">
+                        
+                        <thead class="table-dark">
+                            <tr>
+                                <th>Tempo</th>
+                                <th>Valor</th>
+                                <th>ID</th>
+                            </tr>
+                        </thead>
+                        <tbody id="bid_table">
+                            <tr>
+                                <td>1D 10H 24Min 40Seg</td>
+                                <td>R$3.400,00</td>
+                                <td>#8255025</td>
+                            </tr>
+                            <tr>
+                                <td>1D 10H 25Min 01Seg</td>
+                                <td>R$3.320,00</td>
+                                <td>#7583493</td>
+                            </tr>
+                            <tr>
+                                <td>1D 10H 26Min 23Seg</td>
+                                <td>R$3.130,00</td>
+                                <td>#8602649</td>
+                            </tr>
+                            <tr>
+                                <td>1D 15H 35Min 21Seg</td>
+                                <td>R$2.975,00</td>
+                                <td>#7506283</td>
+                            </tr>
+                            <tr>
+                                <td>1D 16H 22Min 53Seg</td>
+                                <td>R$2.345,00</td>
+                                <td>#5634649</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <script>
+                        const tbodyEl = document.getElementById("bid_table")
+                        const bidInputEl = document.getElementById("bid_value")
+
+                        setInterval(function(){updateTable()},1000)
+                    </script>
+
+                </div>
             </div>
         </div>
-    </header>
-    <!-- Section-->
-    <section class="py-5">
+    </section>
+    <!-- Related items section-->
+    <section class="py-5 bg-light">
         <div class="container px-4 px-lg-5 mt-5">
+            <h2 class="fw-bolder mb-4">Related products</h2>
             <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
                 <div class="col mb-5">
                     <div class="card h-100">
@@ -114,20 +210,15 @@
                 </div>
                 <div class="col mb-5">
                     <div class="card h-100">
-                        <!-- Oferta badge-->
-                        <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">
-                            Oferta
-                        </div>
                         <!-- Product image-->
-                        <img class="card-img-top" src="../src/assets/product.jpg" alt="..." />
+                        <img class="card-img-top" src="../src/assets/product.jpg" alt="teste" />
                         <!-- Product details-->
                         <div class="card-body p-4">
                             <div class="text-center">
                                 <!-- Product name-->
-                                <h5 class="fw-bolder">Produto Básico</h5>
+                                <h5 class="fw-bolder">Ótimo produto</h5>
                                 <!-- Product price-->
-                                <span class="text-muted text-decoration-line-through">R$50.00</span>
-                                R$25.00
+                                R$40.00 - R$80.00
                             </div>
                         </div>
                         <!-- Product actions-->
@@ -140,88 +231,12 @@
                 </div>
                 <div class="col mb-5">
                     <div class="card h-100">
+                        <!-- Oferta badge-->
+                        <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">
+                            Oferta
+                        </div>
                         <!-- Product image-->
                         <img class="card-img-top" src="../src/assets/product2.jpg" alt="..." />
-                        <!-- Product details-->
-                        <div class="card-body p-4">
-                            <div class="text-center">
-                                <!-- Product name-->
-                                <h5 class="fw-bolder">Produto Popular</h5>
-                                <!-- Product reviews-->
-                                <div class="d-flex justify-content-center small text-warning mb-2">
-                                    <div class="bi-star-fill"></div>
-                                    <div class="bi-star-fill"></div>
-                                    <div class="bi-star-fill"></div>
-                                    <div class="bi-star-fill"></div>
-                                    <div class="bi-star-fill"></div>
-                                </div>
-                                <!-- Product price-->
-                                R$40.00
-                            </div>
-                        </div>
-                        <!-- Product actions-->
-                        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                            <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="produto.html">Ver
-                                    mais</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col mb-5">
-                    <div class="card h-100">
-                        <!-- Oferta badge-->
-                        <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">
-                            Oferta
-                        </div>
-                        <!-- Product image-->
-                        <img class="card-img-top" src="../src/assets/product.jpg" alt="..." />
-                        <!-- Product details-->
-                        <div class="card-body p-4">
-                            <div class="text-center">
-                                <!-- Product name-->
-                                <h5 class="fw-bolder">Produto Básico</h5>
-                                <!-- Product price-->
-                                <span class="text-muted text-decoration-line-through">R$50.00</span>
-                                R$25.00
-                            </div>
-                        </div>
-                        <!-- Product actions-->
-                        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                            <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="produto.html">Ver
-                                    mais</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col mb-5">
-                    <div class="card h-100">
-                        <!-- Product image-->
-                        <img class="card-img-top" src="../src/assets/product2.jpg" alt="..." />
-                        <!-- Product details-->
-                        <div class="card-body p-4">
-                            <div class="text-center">
-                                <!-- Product name-->
-                                <h5 class="fw-bolder">Produto Básico</h5>
-                                <!-- Product price-->
-                                R$120.00 - R$280.00
-                            </div>
-                        </div>
-                        <!-- Product actions-->
-                        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                            <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="produto.html">Ver
-                                    mais</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col mb-5">
-                    <div class="card h-100">
-                        <!-- Oferta badge-->
-                        <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">
-                            Oferta
-                        </div>
-                        <!-- Product image-->
-                        <img class="card-img-top" src="../src/assets/product.jpg" alt="..." />
                         <!-- Product details-->
                         <div class="card-body p-4">
                             <div class="text-center">
@@ -248,40 +263,11 @@
                         </div>
                     </div>
                 </div>
-                <div class="col mb-5">
-                    <div class="card h-100">
-                        <!-- Product image-->
-                        <img class="card-img-top" src="../src/assets/product2.jpg" alt="..." />
-                        <!-- Product details-->
-                        <div class="card-body p-4">
-                            <div class="text-center">
-                                <!-- Product name-->
-                                <h5 class="fw-bolder">Produto Popular</h5>
-                                <!-- Product reviews-->
-                                <div class="d-flex justify-content-center small text-warning mb-2">
-                                    <div class="bi-star-fill"></div>
-                                    <div class="bi-star-fill"></div>
-                                    <div class="bi-star-fill"></div>
-                                    <div class="bi-star-fill"></div>
-                                    <div class="bi-star-fill"></div>
-                                </div>
-                                <!-- Product price-->
-                                R$40.00
-                            </div>
-                        </div>
-                        <!-- Product actions-->
-                        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                            <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="produto.html">Ver
-                                    mais</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
     <!-- Footer-->
-    <footer class="py-5 bg-dark">
+    <footer class="py-5 bdg-margin-top-100 bg-dark">
         <div class="container">
             <p class="m-0 text-center text-white">Copyright &copy; BiddingGeeks 2022</p>
         </div>
