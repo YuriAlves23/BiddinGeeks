@@ -1,11 +1,13 @@
 package br.com.syndesigroup.biddingeeks.models;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 
 @Entity
@@ -21,6 +23,9 @@ public class Usuario implements Serializable{
 	private String email;
 	private String password;
 	private String telefone;
+	
+	@OneToMany
+	private List<Produto> produtos;
 
 	public Usuario() {
 

@@ -7,11 +7,12 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 
 @Entity
 @SequenceGenerator(name = "seq_produto", sequenceName = "seq_produto", allocationSize = 1, initialValue = 1)
-public class Produto  implements Serializable{
+public class Produto implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -23,13 +24,16 @@ public class Produto  implements Serializable{
 	private Double lanceMinimo;
 	private LocalDate dataInicio;
 	private LocalDate dataTermino;
-
+	
+	@ManyToOne
+	private Usuario usuario;
+	
 	public Produto() {
 		
 	}
 
 	public Produto(Long id, String nome, String descricao, boolean disponivel, Double lanceMinimo, LocalDate dataInicio,
-			LocalDate dataTermino) {
+			LocalDate dataTermino, Usuario usuario) {
 		super();
 		this.id = id;
 		this.nome = nome;
@@ -38,6 +42,7 @@ public class Produto  implements Serializable{
 		this.lanceMinimo = lanceMinimo;
 		this.dataInicio = dataInicio;
 		this.dataTermino = dataTermino;
+		this.usuario = usuario;
 	}
 
 	public Long getId() {
@@ -96,8 +101,12 @@ public class Produto  implements Serializable{
 		this.dataTermino = dataTermino;
 	}
 
-	public static long getSerialversionuid() {
-		return serialVersionUID;
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
 	}
 	
 }

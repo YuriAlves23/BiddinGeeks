@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Login BiddingGeeks</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <!-- Bootstrap icons-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="css/styles.css" rel="stylesheet" />
+</head>
+
+<body>
+    <!-- Header-->
+    <div class="bdg-container-login px-4 px-lg-5 my-5">
+        <div class="text-center bdg-margin-login">
+            <h1 class="display-6 fw-bolder">Login</h1>
+            <div class="row text-start">
+                <form>
+                    <div class="form-group mt-3">
+                        <label for="exampleInputEmail1">Endereço de email</label>
+                        <input type="email" class="form-control" id="emailLogin" aria-describedby="emailHelp"
+                            placeholder="Seu email">
+                    </div>
+                    <div class="form-group mt-3">
+                        <label for="exampleInputPassword1">Senha</label>
+                        <input type="password" class="form-control" id="passwordLogin" placeholder="Senha">
+                    </div>
+                    <div class="text-center mt-5">
+                        <button type="button" class="btn btn-primary px-5" onclick="logar()">Entrar</button>
+                    </div>
+                    <div class="text-center mt-5">
+                        <a href="cadastro.html">Cadastre-se</a>
+                    </div>
+                </form>
+                <div class="text-center mt-5">
+                    <p>Copyright &copy;BiddingGeeks 2022</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <!-- Jquery -->
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"
+        integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="js/"></script>
+
+    <script type="text/javascript">
+        function logar() {
+            var email = $("#emailLogin").val();
+            var password = $("#passwordLogin").val();
+
+            $.ajax({
+                method: "GET",
+                url: "usuarios/logar",
+                data: "email=" + email + "&password=" + password,
+                success: function (response) {
+
+                    
+                    location.href = "/index.html?id=" + response.id
+                    //var url = new URL("/index/?id=123")
+
+                }
+            }).fail(function (xhr, status, errorThrown) {
+
+                alert("Usuario ou Senha Invalidos");
+
+            });
+        }
+    </script>
+
+</body>
+
+</html>

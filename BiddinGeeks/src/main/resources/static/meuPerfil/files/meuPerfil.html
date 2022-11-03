@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>BiddinGeeks - Meu Perfil</title>
+    <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
+    <link href="css/styles.css" rel="stylesheet" />
+    <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+</head>
+
+<body class="sb-nav-fixed" onload="listarProdutosUsuario()">
+    <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+        <!-- Navbar Brand-->
+        <a class="navbar-brand ps-3" href="../../index.html">BiddinGeeks</a>
+        <!-- Sidebar Toggle-->
+        <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i
+                class="fas fa-bars"></i></button>
+        <!-- Navbar Perfil-->
+        <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
+            <div class="input-group">
+            </div>
+        </form>
+    </nav>
+    <div id="layoutSidenav">
+        <div id="layoutSidenav_nav">
+            <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+                <div class="sb-sidenav-menu">
+                    <div class="nav">
+                        <div class="sb-sidenav-menu-heading">Minha Conta</div>
+                        <a class="nav-link" href="#layoutSidenav_content" onclick="ativarPerfilcontent()">
+                            <div class="sb-nav-link-icon"><i class="fa fa-user"></i></div>
+                            Meu Perfil
+                        </a>
+                    </div>
+                </div>
+                <div class="sb-sidenav-footer">
+                    <div class="small">Logged in as:</div>
+                    Yuri In da Hood
+                </div>
+            </nav>
+        </div>
+        <div id="layoutSidenav_content">
+            <main>
+                <div class="container-fluid px-4">
+                    <h1 class="mt-4">Perfil</h1>
+                    <ol class="breadcrumb mb-1">
+                        <li class="breadcrumb-item active">Alterar usuário</li>
+                    </ol>
+                    <form>
+                        <div style="width: fit-content;" class="form-group mt-8">
+                            <input type="usuario" class="form-control" id="alterarUsuario" aria-describedby="altUser"
+                                placeholder="Novo Usuário">
+                        </div>
+                    </form>
+                    <ol class="breadcrumb mb-1">
+                        <li class="breadcrumb-item active">Alterar senha</li>
+                    </ol>
+
+                    <form>
+                        <div style="width: fit-content;" class="form-group mt-8">
+                            <input type="senha" class="form-control" id="alterarSenha" aria-describedby="altSenha"
+                                placeholder="Nova senha">
+                        </div>
+                    </form>
+                    <ol class="breadcrumb mb-1">
+                        <li class="breadcrumb-item active">Alterar e-mail</li>
+                    </ol>
+                    <form>
+                        <div style="width: fit-content;" class="form-group mt-8">
+                            <input type="email" class="form-control" id="alterarEmail" aria-describedby="altEmail"
+                                placeholder="Novo email">
+                        </div>
+                    </form>
+                    <ol class="breadcrumb mb-1">
+                        <li class="breadcrumb-item active">Alterar telefone</li>
+                    </ol>
+                    <form>
+                        <div style="width: fit-content;" class="form-group mt-8">
+                            <input type="telefone" class="form-control" id="alterarTelefone"
+                                aria-describedby="altTelefone" placeholder="Novo ">
+                        </div>
+                    </form>
+
+                </div>
+            </main>
+            <main>
+                <div class="container-fluid px-4">
+                    <h1 class="mt-4">Produtos</h1>
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                        data-bs-target="#modalSalvar">Cadastrar</button>
+                    <table class="table" id="tabelaResultados">
+                        <thead>
+                            <tr>
+                                <th scope="col">Id</th>
+                                <th scope="col">Nome</th>
+                                <th scope="col">Lance inicial</th>
+                                <th scope="col">Editar</th>
+                                <th scope="col">Deletar</th>
+                            </tr>
+                            <form>
+                        </thead>
+                        <tbody>
+
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Modal Salvar-->
+                <div class="modal fade" id="modalSalvar" tabindex="-1" aria-labelledby="modalSalvarLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="modalSalvarLabel">Modal title</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form>
+                                    <div class="container bdg-margin-top-100">
+                                        <div class="form-group col m-3">
+                                            <label for="nomeProduto">Nome</label>
+                                            <input type="text" class="form-control" id="nomeProduto" placeholder="Nome">
+                                        </div>
+                                        <div class="form-group col m-3">
+                                            <label for="descricao">Descrição</label>
+                                            <input type="text" class="form-control" id="descricao"
+                                                placeholder="Descrição">
+                                        </div>
+                                        <div class="form-group col m-3">
+                                            <label for="lanceInicial">Lance Inicial</label>
+                                            <input type="text" class="form-control" id="lanceInicial"
+                                                placeholder="0.00">
+                                        </div>
+                                        <div class="form-group col m-3">
+                                            <label for="dataHora">Data e Hora Inicio</label>
+                                            <input type="text" class="form-control" id="dataInicio"
+                                                placeholder="15/10/2022">
+                                        </div>
+                                        <div class="form-group col m-3">
+                                            <label for="dataHora">Data e Hora Inicio</label>
+                                            <input type="text" class="form-control" id="dataTermino"
+                                                placeholder="15/10/2022">
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
+                                <button type="button" class="btn btn-success" onclick="salvarProduto()">Salvar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modal Editar-->
+                <div class="modal fade" id="modalEditar" tabindex="-1" aria-labelledby="modalEditarLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="modalEditarLabel">Modal title</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form>
+                                    <div class="container bdg-margin-top-100">
+                                        <div class="form-group col m-3">
+                                            <input type="text" class="form-control" id="idProdutoEditar"
+                                                placeholder="Nome" hidden>
+                                        </div>
+                                        <div class="form-group col m-3">
+                                            <label for="nomeProduto">Nome</label>
+                                            <input type="text" class="form-control" id="nomeProdutoEditar"
+                                                placeholder="Nome">
+                                        </div>
+                                        <div class="form-group col m-3">
+                                            <label for="descricao">Descrição</label>
+                                            <input type="text" class="form-control" id="descricaoEditar"
+                                                placeholder="Descrição">
+                                        </div>
+                                        <div class="form-group col m-3">
+                                            <label for="lanceInicial">Lance Inicial</label>
+                                            <input type="text" class="form-control" id="lanceInicialEditar"
+                                                placeholder="0.00">
+                                        </div>
+                                        <div class="form-group col m-3">
+                                            <label for="dataHora">Data e Hora Inicio</label>
+                                            <input type="text" class="form-control" id="dataInicioEditar"
+                                                placeholder="15/10/2022">
+                                        </div>
+                                        <div class="form-group col m-3">
+                                            <label for="dataHora">Data e Hora Inicio</label>
+                                            <input type="text" class="form-control" id="dataTerminoEditar"
+                                                placeholder="15/10/2022">
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
+                                <button type="button" class="btn btn-success"
+                                    onclick="atualizarProduto()">Atualizar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modal Editar-->
+                <div class="modal fade" id="modalDeletar" tabindex="-1" aria-labelledby="modalDeletarLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="modalDeletarLabel">Modal title</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form>
+                                    <div class="form-group col m-3">
+                                        <input type="text" class="form-control" id="idProdutoDeletar" hidden>
+                                    </div>
+                                </form>
+                                Tem certeza que deseja apagar esse produto ?
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Não</button>
+                                <button type="button" class="btn btn-success">Sim</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </main>
+            <footer class="py-4 bg-light mt-auto">
+                <div class="container-fluid px-4">
+                    <div class="d-flex align-items-center justify-content-between small">
+                        <div class="text-muted">Copyright &copy; BiddinGeeks 2022</div>
+                        <div>
+                            <a href="#">Privacy Policy</a>
+                            &middot;
+                            <a href="#">Terms &amp; Conditions</a>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+
+    <!-- Jquery -->
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"
+        integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="js/scripts.js"></script>
+    <script src="js/scripts.js"></script>
+
+
+    <script type="text/javascript">
+        function listarProdutosUsuario() {
+            var id = 1
+            $.ajax({
+                method: "GET",
+                url: "/produtos/" + id + "/listar",
+                data: "",
+                success: function (response) {
+                    $('#tabelaResultados > tbody > tr').remove();
+
+                    for (var i = 0; i < response.length; i++) {
+                        $('#tabelaResultados> tbody').append('<tr id="' + response[i].id + '"><td>' + response[i].id + '</td><td>' + response[i].nome + '</td><td>' + response[i].lanceMinimo + '</td><td><button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#modalEditar" onclick="verProduto(' + response[i].id + ')">Ver</button></td><td><button type="button" class="btn btn-danger" onclick="deletarUsuario(' + response[i].id + ')">Delete</button></td></tr>');
+                    }
+                }
+
+            }).fail(function (xhr, status, errorThrown) {
+                alert("Erro ao buscar usuario: " + xhr.responseText);
+            });
+
+        }
+
+        function verProduto(id) {
+
+            $.ajax({
+                method: "GET",
+                url: "/produtos/buscarPorId",
+                data: "id=" + id,
+                success: function (response) {
+
+                    $("#idProdutoEditar").val(response.id);
+                    $("#nomeProdutoEditar").val(response.nome);
+                    $("#descricaoEditar").val(response.descricao);
+                    $("#lanceInicialEditar").val(response.lanceMinimo);
+                    $("#dataInicioEditar").val(response.dataInicio);
+                    $("#dataTerminoEditar").val(response.dataTermino);
+
+                }
+            }).fail(function (xhr, status, errorThrown) {
+                alert("Erro ao buscar usuario por id: " + xhr.responseText);
+            });
+        }
+
+        function salvarProduto() {
+            var nome = $("#nomeProduto").val();
+            var descricao = $("#descricao").val();
+            var lanceMinimo = $("#lanceInicial").val();
+            var dataInicio = $("#dataInicio").val();
+            var dataTermino = $("#dataTermino").val();
+
+            /*if (nome == null || nome != null && nome.trim() == '') {
+                $("#nome").focus();
+                alert('Informe o nome');
+                return;
+            }
+
+            if (idade == null || idade != null && idade.trim() == '') {
+                $("#idade").focus();
+                alert('Informe a idade');
+                return;
+            }*/
+
+            $.ajax({
+                method: "POST",
+                url: "/produtos/" + 1 + "/salvar",
+                data: JSON.stringify({
+                    "nome": nome,
+                    "descricao": descricao,
+                    "lanceMinimo": lanceMinimo,
+                    "dataInicio": dataInicio,
+                    "dataTermino": dataTermino
+                }),
+                contentType: "application/json; charset=utf-8",
+                success: function (response) {
+                    $("#id").val(response.id);
+                    $('#modalSalvar').modal('hide');
+                    alert("Salvo com sucesso!");
+                }
+            }).fail(function (xhr, status, errorThrown) {
+                alert("Erro ao salvar usuario: " + xhr.responseText);
+            });
+
+        }
+
+        function atualizarProduto() {
+            var id = $("#idProdutoEditar").val();
+            var nome = $("#nomeProdutoEditar").val();
+            var descricao = $("#descricaoEditar").val();
+            var lanceMinimo = $("#lanceInicialEditar").val();
+            var dataInicio = $("#dataInicioEditar").val();
+            var dataTermino = $("#dataTerminoEditar").val();
+
+            /*if (nome == null || nome != null && nome.trim() == '') {
+                $("#nome").focus();
+                alert('Informe o nome');
+                return;
+            }
+
+            if (idade == null || idade != null && idade.trim() == '') {
+                $("#idade").focus();
+                alert('Informe a idade');
+                return;
+            }*/
+
+            $.ajax({
+                method: "PUT",
+                url: "/produtos/1/atualizar",
+                data: JSON.stringify({
+                    "id": id,
+                    "nome": nome,
+                    "descricao": descricao,
+                    "lanceMinimo": lanceMinimo,
+                    "dataInicio": dataInicio,
+                    "dataTermino": dataTermino
+                }),
+                contentType: "application/json; charset=utf-8",
+                success: function (response) {
+                    $("#id").val(response.id);
+                    $('#modalEditar').modal('hide');
+                    alert("Atualizado com sucesso!");
+                }
+            }).fail(function (xhr, status, errorThrown) {
+                alert("Erro ao Atualizar usuario: " + xhr.responseText);
+            });
+
+        }
+
+        function deletarUsuario(id) {
+
+            if (confirm('Deseja realmente deletar?')) {
+
+                $.ajax({
+                    method: "DELETE",
+                    url: "/produtos/deletar",
+                    data: "id=" + id,
+                    success: function (response) {
+
+                        $('#' + id).remove();
+
+                        alert(response);
+                    }
+                }).fail(function (xhr, status, errorThrown) {
+                    alert("Erro ao deletar usuario por id: " + xhr.responseText);
+                });
+
+            }
+
+        }
+    </script>
+
+</body>
+
+</html>

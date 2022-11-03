@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+	<meta name="description" content="" />
+	<meta name="author" content="" />
+	<title>BiddingGeeks</title>
+	<!-- Favicon-->
+	<link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+	<!-- Bootstrap icons-->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+	<!-- Core theme CSS (includes Bootstrap)-->
+	<link href="css/styles.css" rel="stylesheet" />
+</head>
+
+<body onload="verProduto(idProdutoAtual)">
+	<!-- Navigation-->
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+		<div class="container px-4 px-lg-5">
+			<a class="navbar-brand ps-3" type="button" onclick="paginaIncial(idUsuarioLogado)">BiddinGeeks</a>
+		</div>
+	</nav>
+	<!-- Product section-->
+	<section class="py-5">
+		<div class="container px-4 px-lg-5 my-5">
+			<div class="row gx-4 gx-lg-5 align-items-center">
+				<div class="col-md-6">
+					<!--"<img class="card-img-top mb-5 mb-md-0" src="../src/assets/product3.jpg" alt="..."
+						style="max-width: 600px; max-height: 700px;" />-->
+				</div>
+				<div class="col-md-6">
+					<div class="small mb-1" id="idProdutoAtual"></div>
+					<h1 class="display-5 fw-bolder" id="nomeProdutoAtual"></h1>
+					<div class="fs-5 mb-5">
+						<span id="lanceProdutoAtual"></span>
+					</div>
+					<p class="lead" id="descricaoProdutoAtual"></p>
+					<div class="d-flex">
+						<input class="form-control text-center me-3" id="inputQuantity" type="num" placeholder="0.00"
+							style="max-width: 10rem" />
+						<button class="btn btn-outline-dark flex-shrink-0" type="button" onclick="salvarLance()"
+							id="btnDarLance">
+							<i class="bi bi-currency-dollar me-1"></i>
+							Dar Lance
+						</button>
+
+					</div>
+				</div>
+			</div>
+			<br />
+			<br />
+			<br />
+			<div class="row gx-4 gx-lg-5">
+				<div class="col-md-6">
+					<div>
+						<h2 class="fw-bolder">Tempo restante</h2>
+					</div>
+					<div class="col mb-5">
+						<div class="card h-100">
+							<!-- Product image-->
+
+							<!-- Product details-->
+							<div class="card-body p-4">
+								<div class="text-center" style="margin-top: 70px; margin-bottom: 75px ;">
+									<!-- Timer-->
+									<hr>
+									<h5 class="fw-bolder" id="timeRemaining">
+									</h5>
+									<hr>
+								</div>
+							</div>
+
+						</div>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div>
+						<h2 class="fw-bolder">Últimos lances</h2>
+					</div>
+					<table class="table">
+
+						<thead class="table-dark">
+							<tr>
+								<th>Tempo</th>
+								<th>Valor</th>
+								<th>Nome</th>
+							</tr>
+						</thead>
+						<tbody id="bid_table">
+
+						</tbody>
+					</table>
+
+					<script>
+
+					</script>
+
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- Related items section-->
+
+	<!-- Footer-->
+	<footer class="py-5 bdg-margin-top-100 bg-dark">
+		<div class="container">
+			<p class="m-0 text-center text-white">Copyright &copy; BiddingGeeks 2022</p>
+		</div>
+	</footer>
+	<!-- Jquery -->
+	<script src="https://code.jquery.com/jquery-3.6.1.min.js"
+		integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+
+	<!-- Bootstrap core JS-->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+	<!-- Core theme JS-->
+	<script src="js/scripts.js"></script>
+
+	<script type="text/javascript">
+
+		const urlParams = new URLSearchParams(window.location.search)
+		const idUsuarioLogado = urlParams.get("idUsuario")
+		const idProdutoAtual = urlParams.get("idProduto")
+		const dataAtual = new Date(new Date().setDate(new Date().getDate()))
+
+		console.log(dataAtual)
+		console.log(dataAtual)
+		console.log(dataAtual)
+		console.log(dataAtual)
+		console.log(dataAtual)
+		console.log(dataAtual)
+
+		function paginaIncial(id) {
+			location.href = "../../index.html?id=" + id
+		}
+
+		function verProduto(id) {
+
+			$.ajax({
+				method: "GET",
+				url: "/produtos/buscarPorId",
+				data: "id=" + id,
+				success: function (response) {
+
+					document.getElementById("idProdutoAtual").innerHTML = response.id
+					console.log(response.id)
+					document.getElementById("nomeProdutoAtual").innerHTML = response.nome
+					console.log(response.nome)
+					document.getElementById("descricaoProdutoAtual").innerHTML = response.descricao
+					console.log(response.descricao)
+
+					var dataFinal = response.dataTermino
+					console.log(dataFinal)
+					const tbodyEl = document.getElementById("bid_table")
+					const bidInputEl = document.getElementById("bid_value")
+
+					console.log(dataFinal)
+					var countDownDate = new Date(dataFinal).getTime();  //dataTermino
+
+					intervalo = setInterval(function () {
+						updateBidTable(idProdutoAtual, tbodyEl);
+
+						var dt = new Date()
+						//alert(dt.getTime().toString());
+						currentTime = dt.getHours() + ":" + dt.getMinutes() + ":" + dt.getSeconds()
+
+						// Get today's date and time
+						var now = new Date().getTime();
+
+						// Find the distance between now and the count down date
+						var distance = countDownDate - now;
+
+						// Time calculations for days, hours, minutes and seconds
+						var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+						var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+						var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+						var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+						// Display the result in the element with id="timeRemaining"
+						document.getElementById("timeRemaining").innerHTML = days + " dias " + hours + " horas "
+							+ minutes + " minutos " + seconds + " segundos ";
+
+						// If the count down is finished, write some text
+						if (distance < 0) {
+
+							document.getElementById("timeRemaining").innerHTML = "ENCERRADO";
+
+							buscarUltimoLance()
+							clearInterval(intervalo);
+
+						}
+
+						var dt1 = new Date(2000, 6, 25)
+						var meuDia = dt1.getTime()
+					}, 1000)
+
+				}
+			}).fail(function (xhr, status, errorThrown) {
+				alert("Erro ao buscar usuario por id: " + xhr.responseText);
+			});
+		}
+
+		function salvarLance() {
+			var dataHora = new Date(new Date().setDate(new Date().getDate()));
+			var preco = $("#inputQuantity").val();
+
+
+			/*if (nome == null || nome != null && nome.trim() == '') {
+				$("#nome").focus();
+				alert('Informe o nome');
+				return;
+			}
+
+			if (idade == null || idade != null && idade.trim() == '') {
+				$("#idade").focus();
+				alert('Informe a idade');
+				return;
+			}*/
+
+			$.ajax({
+				method: "POST",
+				url: "/lances/" + idUsuarioLogado + "/" + idProdutoAtual + "/salvar",
+				data: JSON.stringify({
+					"dataHora": dataHora,
+					"preco": preco
+				}),
+				contentType: "application/json; charset=utf-8",
+				success: function (response) {
+					$("#id").val(response.id);
+					alert(response);
+				}
+			}).fail(function (xhr, status, errorThrown) {
+				alert("Erro ao Registrar Lance: " + xhr.responseText);
+			});
+
+		}
+
+		function buscarUltimoLance() {
+			$.ajax({
+				method: "GET",
+				url: "/lances/listarTodos",
+				data: "",
+				contentType: "application/json; charset=utf-8",
+				success: function (response) {
+
+					ultimoLance = response[response.length - 1]
+
+					salvarVenda(ultimoLance)
+				}
+			}).fail(function (xhr, status, errorThrown) {
+				alert("Erro ao buscar Lance: " + xhr.responseText);
+			});
+		}
+
+		function salvarVenda(ultimoLance) {
+
+
+			var idUltimoLance = ultimoLance.id;
+
+			$.ajax({
+				method: "POST",
+				url: "/vendas/" + idUltimoLance + "/salvar",
+				data: "",
+				contentType: "application/json; charset=utf-8",
+				success: function (response) {
+
+					alert(response.comprador.nome + ", é o Vencedor \nValor Pago: R$" + response.preco);
+					document.getElementById("btnDarLance").disabled = true
+
+				}
+
+			}).fail(function (xhr, status, errorThrown) {
+				console.log(idUltimoLance)
+				alert("Erro ao Registrar Lance: " + xhr.responseText);
+			});
+
+		}
+
+	</script>
+</body>
+
+</html>
